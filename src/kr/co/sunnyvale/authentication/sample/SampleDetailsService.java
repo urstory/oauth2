@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import kr.co.sunnyvale.authentication.common.CommonConst;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,9 +15,6 @@ import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 
 
-/**
- * Created by urstory on 2015-08-27.
- */
 public class SampleDetailsService  implements UserDetailsManager {
 
     private Logger logger = Logger.getLogger(this.getClass());
@@ -24,10 +22,10 @@ public class SampleDetailsService  implements UserDetailsManager {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-//        if (email != null && (email.equals(CommonConst.OAUTH_TYPE_FACEBOOK)
-//                || email.equals(CommonConst.OAUTH_TYPE_DAUM))) {
-//            throw new UsernameNotFoundException("not found email=" + email);
-//        } else {
+        if (email != null && (email.equals(CommonConst.OAUTH_TYPE_FACEBOOK)
+                || email.equals(CommonConst.OAUTH_TYPE_DAUM))) {
+            throw new UsernameNotFoundException("not found email=" + email);
+        } else {
 //            UserOnAuthentication user = userRepository.userFindByEmail(email);
 //
 //            if (user != null) {
@@ -48,7 +46,7 @@ public class SampleDetailsService  implements UserDetailsManager {
 //            } else {
 //                throw new UsernameNotFoundException("not found email=" + email);
 //            }
-//        }
+        }
         return null;
     }
 
